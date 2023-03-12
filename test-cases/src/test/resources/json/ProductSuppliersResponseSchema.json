@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "array",
+  "items": [
+    {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "price": {
+          "type": "number"
+        },
+        "category": {
+          "type": "string",
+          "pattern": "(wine|beer)"
+        },
+        "supplier": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "id": {
+              "type": "string",
+              "pattern": "SUP[0-9]{7}"
+            }
+          },
+          "required": [
+            "id"
+          ]
+        },
+        "id": {
+          "type": "string",
+          "pattern": "PRD[0-9]{7}"
+        }
+      },
+      "required": [
+        "price",
+        "supplier",
+        "id"
+      ]
+    }
+  ]
+}

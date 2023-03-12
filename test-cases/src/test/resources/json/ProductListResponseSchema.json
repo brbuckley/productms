@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "array",
+  "items": [
+    {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "price": {
+          "type": "number"
+        },
+        "category": {
+          "type": "string",
+          "pattern": "(wine|beer)"
+        },
+        "id": {
+          "type": "string",
+          "pattern": "PRD[0-9]{7}"
+        }
+      },
+      "required": [
+        "price",
+        "id"
+      ]
+    }
+  ]
+}
