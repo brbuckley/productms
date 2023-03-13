@@ -21,9 +21,9 @@ public interface ProductRepository extends JpaRepository<ProductEntity, Integer>
   // nothing when null.
   @Query(
       "select p from ProductEntity p where "
-          + "( (coalesce(:ids) is null) or (coalesce(:ids) is not null and p.productId in :ids) ) "
-          + "and ( (:category is null) or (:category is not null and p.category = :category) ) "
-          + "and ( (coalesce(:name) is null) or (:name is not null and p.name like :name ) ) ")
+          + "( (:ids) is null or p.productId in (:ids) )"
+          + "and( :category is null or p.category = :category) "
+          + "and ( (:name is null) or (p.name like :name ) ) ")
   List<ProductEntity> findByIdsPagination(
       @Param("ids") List<String> productIds,
       @Param("category") ProductCategory category,
