@@ -152,7 +152,7 @@ public class ProductService {
         String.valueOf(limit),
         String.valueOf(offset),
         String.valueOf(fetchSuppliers));
-    List<String> idsList = new ArrayList<>();
+    List<String> idsList = null;
     String[] sortArray = sort.split("\\.");
     Sort.Direction direction =
         sortArray[0].equals("asc") ? Sort.Direction.ASC : Sort.Direction.DESC;
