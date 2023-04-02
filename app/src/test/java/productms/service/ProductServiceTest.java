@@ -162,10 +162,9 @@ public class ProductServiceTest {
   public void testGetProducts_whenSortDescNoFetch_thenReturnList() throws NotExistException {
     Pageable pageable =
         PageRequest.of(10, 10, Sort.by(new Sort.Order(Sort.Direction.DESC, "name")));
-    List<String> ids = new ArrayList<>();
     // Mocks
     ProductRepository productRepo = Mockito.mock(ProductRepository.class);
-    when(productRepo.findByIdsPagination(ids, ProductCategory.BEER, null, pageable))
+    when(productRepo.findByIdsPagination(null, ProductCategory.BEER, null, pageable))
         .thenReturn(ProductMsResponseUtil.productEntityList());
 
     service =
@@ -181,10 +180,9 @@ public class ProductServiceTest {
   public void testGetProducts_whenNotFound_thenThrow() {
     Pageable pageable =
         PageRequest.of(10, 10, Sort.by(new Sort.Order(Sort.Direction.DESC, "name")));
-    List<String> ids = new ArrayList<>();
     // Mocks
     ProductRepository productRepo = Mockito.mock(ProductRepository.class);
-    when(productRepo.findByIdsPagination(ids, ProductCategory.BEER, "%%", pageable))
+    when(productRepo.findByIdsPagination(null, ProductCategory.BEER, "%%", pageable))
         .thenReturn(new ArrayList<>());
 
     service =
